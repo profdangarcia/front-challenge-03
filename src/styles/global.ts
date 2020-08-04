@@ -7,10 +7,14 @@ export default createGlobalStyle`
     padding: 0;
     outline: 0;
     box-sizing: border-box;
+    border: 0;
+  }
+
+  html, body, #root {
+    height: 100%;
   }
 
   body {
-    min-height: 100%;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -24,6 +28,15 @@ export default createGlobalStyle`
 
   #root {
     padding: 40px 20px;
+  }
+
+  :root {
+    --dark-mode-elem: hsl(209, 23%, 22%);
+    --dark-mode-bg: hsl(207, 26%, 17%);
+    --light-mode-tx: hsl(200, 15%, 8%);
+    --light-mode-input: hsl(0, 0%, 52%);
+    --light-mode-bg: hsl(0, 0%, 98%);
+    --light-mode-elem: hsl(0, 0%, 100%);
   }
 
 `;
