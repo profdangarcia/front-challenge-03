@@ -13,7 +13,12 @@ export const Content = styled.div`
 `;
 
 export const Title = styled.h2`
+  font-size: 16px;
 
+  @media screen and (min-width: ${props =>
+      props.theme.sizes.mediumScreenSize}) {
+    font-size: 20px;
+  }
 `;
 
 export const DisplayModeButton = styled.button`
@@ -23,4 +28,5 @@ export const DisplayModeButton = styled.button`
   background: none;
   color: ${props => props.theme.colors.text};
   width: 100px;
+  font-weight: 600;
 `;

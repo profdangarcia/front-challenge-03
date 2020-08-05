@@ -5,10 +5,14 @@ declare module 'styled-components' {
     title: string;
 
     colors: {
-      input: string,
-      bg: string,
-      element: string,
-      text: string
-    }
+      input: string;
+      bg: string;
+      element: string;
+      text: string;
+    };
+
+    sizes: {
+      mediumScreenSize: string;
+    };
   }
 }

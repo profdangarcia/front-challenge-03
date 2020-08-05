@@ -5,6 +5,10 @@ export default {
     text: '#fff',
     input: 'hsl(209, 23%, 22%)',
     bg: 'hsl(207, 26%, 17%)',
-    element: 'hsl(209, 23%, 22%)'
-  }
-}
+    element: 'hsl(209, 23%, 22%)',
+  },
+
+  sizes: {
+    mediumScreenSize: '1024px',
+  },
+};
