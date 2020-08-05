@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background: ${props => props.theme.colors.bg};
+  background: ${props => props.theme.colors.element};
   padding: 30px 0;
   color: ${props => props.theme.colors.text};
+  box-shadow: ${props =>
+    props.theme.title === 'light' &&
+    '0px 2px 5px 0px rgba(204, 204, 204, 0.5)'};
+  margin-bottom: 10px;
 `;
 
 export const Content = styled.div`
