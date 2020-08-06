@@ -1,24 +1,25 @@
-import React from 'react';
-import {
-  getCountriesApiData,
-  regionsRoute,
-  allCountriesRoute,
-} from '../../services/countriesApi';
-
+import React, { useContext } from 'react';
+import { Countrie } from '../../types/Countrie';
+import { getCountriesApiData, regionsRoute } from '../../services/countriesApi';
+import { CountriesContext } from '../../hooks/CountriesContext';
 import { Container } from './styles';
 
 type SelectToolProps = {
-  stateChange(newState: []): any;
+  stateChange(newState: Countrie[]): void;
 };
 
 const SelectTool: React.FC<SelectToolProps> = ({ stateChange }) => {
+  const allCountries = useContext(CountriesContext);
+
   const handleFilter = async (filter: string): Promise<void> => {
-    const requestRoute = filter
-      ? `${regionsRoute}/${filter}`
-      : allCountriesRoute;
-    const response = await getCountriesApiData(requestRoute);
-    if (response.status === 200) {
-      stateChange(response.data);
+    const requestRoute = `${regionsRoute}/${filter}`;
+    if (filter) {
+      const response = await getCountriesApiData(requestRoute);
+      if (response.status === 200) {
+        stateChange(response.data);
+      }
+    } else {
+      stateChange(allCountries);
     }
   };
 

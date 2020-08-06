@@ -1,13 +1,12 @@
-import React, { useEffect, useState, useMemo } from 'react';
-import {
-  getCountriesApiData,
-  allCountriesRoute,
-} from '../../services/countriesApi';
+import React, { useEffect, useState, useMemo, useContext } from 'react';
+
 import { Countrie } from '../../types/Countrie';
 import Wrapper from '../../components/Wrapper';
 import SearchTool from '../../components/SearchTool';
 import SelectTool from '../../components/SelectTool';
 import CardItem from '../../components/CardItem';
+
+import { CountriesContext } from '../../hooks/CountriesContext';
 import {
   Container,
   Content,
@@ -16,26 +15,24 @@ import {
 } from './styles';
 
 const Home: React.FC = () => {
-  const [countries, setCountries] = useState([]);
+  const allCountries = useContext(CountriesContext);
+  const [displayedCountries, setDisplayedCountries] = useState(allCountries);
+  const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
-    const fetchCountries = async () => {
-      const response = await getCountriesApiData(allCountriesRoute);
-
-      if (response && response.status === 200) {
-        const { data } = response;
-        setCountries(data);
-      }
-    };
-    fetchCountries();
-  }, []);
+    setDisplayedCountries(allCountries);
+  }, [allCountries]);
 
   const countriesList = useMemo(
     () =>
-      countries.map((countrie: Countrie) => (
-        <CardItem key={countrie.name} countrie={countrie} />
-      )),
-    [countries],
+      displayedCountries.length > 0 ? (
+        displayedCountries.map((countrie: Countrie) => (
+          <CardItem key={countrie.name} countrie={countrie} />
+        ))
+      ) : (
+        <p>Sem resultados</p>
+      ),
+    [displayedCountries],
   );
 
   return (
@@ -43,10 +40,15 @@ const Home: React.FC = () => {
       <Wrapper>
         <Content>
           <FiltersContainer>
-            <SearchTool />
-            <SelectTool stateChange={setCountries} />
+            <SearchTool
+              isSearching={setIsSearching}
+              setResults={setDisplayedCountries}
+            />
+            <SelectTool stateChange={setDisplayedCountries} />
           </FiltersContainer>
-          <CountriesContainer>{countriesList}</CountriesContainer>
+          <CountriesContainer>
+            {!isSearching ? countriesList : <p>Buscando...</p>}
+          </CountriesContainer>
         </Content>
       </Wrapper>
     </Container>

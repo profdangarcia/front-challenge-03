@@ -5,7 +5,7 @@ import Routes from './routes';
 
 import light from './styles/themes/light';
 import dark from './styles/themes/dark';
-
+import { CountriesProvider } from './hooks/CountriesContext';
 import Header from './components/Header';
 import GlobalStyles from './styles/global';
 
@@ -20,8 +20,10 @@ const App: React.FC = () => {
     <>
       <BrowserRouter>
         <ThemeProvider theme={theme}>
-          <Header toggleTheme={toggleTheme} />
-          <Routes />
+          <CountriesProvider>
+            <Header toggleTheme={toggleTheme} />
+            <Routes />
+          </CountriesProvider>
           <GlobalStyles />
         </ThemeProvider>
       </BrowserRouter>
