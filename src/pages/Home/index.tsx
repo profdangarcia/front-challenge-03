@@ -44,7 +44,7 @@ const Home: React.FC = () => {
         <Content>
           <FiltersContainer>
             <SearchTool />
-            <SelectTool />
+            <SelectTool stateChange={setCountries} />
           </FiltersContainer>
           <CountriesContainer>{countriesList}</CountriesContainer>
         </Content>

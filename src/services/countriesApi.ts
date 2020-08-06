@@ -16,7 +16,7 @@ export async function getCountriesApiData(
   route: string,
   params = '',
 ): Promise<APIResponse> {
-  const apiRoute = params ? `${route}/params` : route;
+  const apiRoute = params ? `${route}/${params}` : route;
   try {
     const { data, status } = await countriesApi.get(apiRoute);
     return { data, status };
@@ -31,3 +31,4 @@ export async function getCountriesApiData(
 
 export const allCountriesRoute = '/rest/v2/all';
 export const filterRoute = '/rest/v2/name';
+export const regionsRoute = '/rest/v2/region';
