@@ -5,8 +5,15 @@ import {
 } from '../../services/countriesApi';
 import { Countrie } from '../../types/Countrie';
 import Wrapper from '../../components/Wrapper';
+import SearchTool from '../../components/SearchTool';
+import SelectTool from '../../components/SelectTool';
 import CardItem from '../../components/CardItem';
-import { Container, Content, CountriesContainer } from './styles';
+import {
+  Container,
+  Content,
+  CountriesContainer,
+  FiltersContainer,
+} from './styles';
 
 const Home: React.FC = () => {
   const [countries, setCountries] = useState([]);
@@ -35,7 +42,10 @@ const Home: React.FC = () => {
     <Container>
       <Wrapper>
         <Content>
-          <h1>Home</h1>
+          <FiltersContainer>
+            <SearchTool />
+            <SelectTool />
+          </FiltersContainer>
           <CountriesContainer>{countriesList}</CountriesContainer>
         </Content>
       </Wrapper>

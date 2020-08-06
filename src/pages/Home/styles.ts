@@ -7,6 +7,14 @@ export const Container = styled.div`
 
 export const Content = styled.div``;
 
+export const FiltersContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+`;
+
 export const CountriesContainer = styled.div`
   display: flex;
   flex-wrap: wrap;

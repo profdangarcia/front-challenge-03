@@ -7,7 +7,7 @@ export const Container = styled.div`
   box-shadow: ${props =>
     props.theme.title === 'light' &&
     '0px 2px 5px 0px rgba(204, 204, 204, 0.5)'};
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 `;
 
 export const Content = styled.div`
