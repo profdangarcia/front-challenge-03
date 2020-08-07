@@ -9,6 +9,7 @@ export const Container = styled(Link)`
   border-radius: 4px;
   cursor: pointer;
   text-decoration: none;
+  box-shadow: ${props => props.theme.shadow};
 `;
 
 export const CardImage = styled.img`

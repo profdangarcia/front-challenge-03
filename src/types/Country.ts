@@ -3,6 +3,10 @@ interface CountryCurrency {
   name: string;
   symbol: string;
 }
+
+interface CountryLanguage {
+  name: string;
+}
 export interface Country {
   name: string;
   capital: string;
@@ -15,4 +19,5 @@ export interface Country {
   nativeName: string;
   topLevelDomain: string[];
   currencies: CountryCurrency[];
+  languages: CountryLanguage[];
 }

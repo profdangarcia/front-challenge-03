@@ -19,8 +19,10 @@ const SearchTool: React.FC<SearchToolProps> = ({ isSearching, setResults }) => {
   useEffect(() => {
     const searchFor = async (): Promise<void> => {
       isSearching(true);
-      const requestRoute = `${filterRoute}/${debouncedSearchTerm}`;
-      const response = await getCountriesApiData(requestRoute);
+      const response = await getCountriesApiData(
+        filterRoute,
+        debouncedSearchTerm,
+      );
       isSearching(false);
       let searchResponse: [] | Country[] = [];
       if (response.status === 200) {

@@ -10,6 +10,8 @@ export const Container = styled.div`
   align-items: center;
   border-radius: 6px;
   margin-bottom: 35px;
+  box-shadow: ${props => props.theme.shadow};
+
   svg {
     font-size: 20px;
   }

@@ -12,9 +12,8 @@ const SelectTool: React.FC<SelectToolProps> = ({ stateChange }) => {
   const allCountries = useContext(CountriesContext);
 
   const handleFilter = async (filter: string): Promise<void> => {
-    const requestRoute = `${regionsRoute}/${filter}`;
     if (filter) {
-      const response = await getCountriesApiData(requestRoute);
+      const response = await getCountriesApiData(regionsRoute, filter);
       if (response.status === 200) {
         stateChange(response.data);
       }

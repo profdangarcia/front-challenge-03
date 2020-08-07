@@ -7,6 +7,7 @@ export const Container = styled.select`
   background: ${props => props.theme.colors.element};
   color: ${props => props.theme.colors.text};
   border-radius: 6px;
+  box-shadow: ${props => props.theme.shadow};
 
   option {
     background: ${props => props.theme.colors.element};

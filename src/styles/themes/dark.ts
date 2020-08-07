@@ -1,6 +1,6 @@
 export default {
   title: 'dark',
-
+  shadow: '0',
   colors: {
     text: '#fff',
     input: '#fff',
