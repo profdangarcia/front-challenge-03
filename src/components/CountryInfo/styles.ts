@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  font-weight: 400;
+  font-weight: 300;
   padding: 40px 0;
 `;
 
@@ -60,4 +60,5 @@ export const CountryBorderBox = styled.div`
   box-shadow: ${props => props.theme.shadow};
   font-size: 12px;
   margin-bottom: 5px;
+  width: 73px;
 `;
