@@ -43,14 +43,19 @@ export const SecondaryDetails = styled.div`
 `;
 
 export const ItemExtraDetails = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
   strong {
     font-weight: 600;
     width: 100%;
+    display: block;
     margin-bottom: 10px;
   }
+`;
+
+export const BordersGrid = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(73px, 1fr));
+  grid-gap: 10px;
 `;
 
 export const CountryBorderBox = styled.div`
@@ -59,6 +64,6 @@ export const CountryBorderBox = styled.div`
   border-radius: 4px;
   box-shadow: ${props => props.theme.shadow};
   font-size: 12px;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
   width: 73px;
 `;

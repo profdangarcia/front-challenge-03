@@ -11,6 +11,7 @@ import {
   PrimaryDetails,
   SecondaryDetails,
   ItemExtraDetails,
+  BordersGrid,
   CountryBorderBox,
 } from './styles';
 
@@ -77,7 +78,7 @@ const CountryInfo: React.FC<CountryInfoProps> = ({ country }) => {
         </ItemDetails>
         <ItemExtraDetails>
           <strong>Border Countries:</strong>
-          {countryBorders}
+          <BordersGrid>{countryBorders}</BordersGrid>
         </ItemExtraDetails>
       </DetailsBox>
     </Container>

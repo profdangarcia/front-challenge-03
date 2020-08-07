@@ -28,9 +28,12 @@ export const CountriesContainer = styled.div`
 
   @media screen and (min-width: ${props =>
       props.theme.sizes.mediumScreenSize}) {
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+    grid-gap: 45px;
+    justify-content: flex-start;
     a {
-      margin-bottom: 50px;
+      margin-bottom: 5px;
     }
   }
 `;
