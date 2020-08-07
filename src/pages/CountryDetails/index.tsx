@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { RouteComponentProps, Link } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router-dom';
 
 import { codeRoute, getCountriesApiData } from '../../services/countriesApi';
 import { Country } from '../../types/Country';
 import Wrapper from '../../components/Wrapper';
+import ReturnButton from '../../components/ReturnButton';
 import CountryInfo from '../../components/CountryInfo';
-import { Container, BackButton } from './styles';
+import { Container } from './styles';
 
 type TParams = { code: string };
 
@@ -29,9 +30,7 @@ const CountryDetails = ({
   return (
     <Container>
       <Wrapper>
-        <Link to="/">
-          <BackButton type="button">Voltar</BackButton>
-        </Link>
+        <ReturnButton />
         {currentCountry && currentCountry.name && (
           <CountryInfo country={currentCountry} />
         )}

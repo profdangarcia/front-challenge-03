@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { API_BASE_URL } from '../config/constants';
-import { Country } from '../types/Country';
 
 export const countriesApi = axios.create({
   baseURL: API_BASE_URL,

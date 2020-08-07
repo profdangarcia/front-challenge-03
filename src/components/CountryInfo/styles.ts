@@ -106,7 +106,7 @@ export const ItemExtraDetails = styled.div`
 export const BordersGrid = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(73px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100.8px, 1fr));
   grid-gap: 10px;
 
   @media screen and (min-width: ${props =>
@@ -124,7 +124,7 @@ export const CountryBorderBox = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 95.5px;
+  min-width: 100.8px;
   padding: 3px 12px;
   border-radius: 4px;
   box-shadow: ${props => props.theme.shadow};
