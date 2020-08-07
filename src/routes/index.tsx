@@ -6,8 +6,8 @@ import CountryDetails from '../pages/CountryDetails';
 
 const Routes: React.FC = () => (
   <Switch>
-    <Route exact path="/:cioc" component={CountryDetails} />
     <Route exact path="/" component={Home} />
+    <Route path="/:code" component={CountryDetails} />
   </Switch>
 );
 

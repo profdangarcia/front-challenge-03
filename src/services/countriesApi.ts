@@ -1,21 +1,16 @@
 import axios from 'axios';
 import { API_BASE_URL } from '../config/constants';
+import { Country } from '../types/Country';
 
 export const countriesApi = axios.create({
   baseURL: API_BASE_URL,
   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 });
 
-interface APIResponse {
-  data: [];
-  status: number;
-  message?: string;
-}
-
 export async function getCountriesApiData(
   route: string,
   params = '',
-): Promise<APIResponse> {
+): Promise<any> {
   const apiRoute = params ? `${route}/${params}` : route;
   try {
     const { data, status } = await countriesApi.get(apiRoute);
