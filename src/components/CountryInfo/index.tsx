@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Country } from '../../types/Country';
 import { numberFormater } from '../../utils';
-
+import { CountriesContext } from '../../hooks/CountriesContext';
 import {
   Container,
   ItemImage,
@@ -26,6 +26,7 @@ type SmallInfo = {
 
 const CountryInfo: React.FC<CountryInfoProps> = ({ country }) => {
   const population = numberFormater(country.population);
+  const allCountries = useContext(CountriesContext);
 
   const topLevelDomain = country.topLevelDomain
     .map(domain => domain)
@@ -37,9 +38,21 @@ const CountryInfo: React.FC<CountryInfoProps> = ({ country }) => {
 
   const languages = country.languages.map(language => language.name).join(', ');
 
-  const countryBorders = country.borders.map(border => (
-    <CountryBorderBox>{border}</CountryBorderBox>
-  ));
+  const countryBorders = country.borders.map(border => {
+    const [borderCountry] =
+      allCountries &&
+      allCountries.filter(countryData => countryData.alpha3Code === border);
+    const name = borderCountry && borderCountry.name;
+    const trimedCountryName =
+      name && name.length > 12 ? `${name.substring(0, 11)}...` : name;
+    return (
+      borderCountry && (
+        <CountryBorderBox to={`/${borderCountry.alpha3Code}`}>
+          {trimedCountryName}
+        </CountryBorderBox>
+      )
+    );
+  });
 
   const CountrySmallInfo: React.FC<SmallInfo> = ({ description, info }) => (
     <SmallInfoText>
