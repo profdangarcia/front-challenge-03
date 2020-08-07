@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { MdSearch } from 'react-icons/md';
-import { Countrie } from '../../types/Countrie';
+import { Country } from '../../types/Country';
 import { useDebounce } from '../../hooks';
 import { filterRoute, getCountriesApiData } from '../../services/countriesApi';
 import { CountriesContext } from '../../hooks/CountriesContext';
@@ -8,7 +8,7 @@ import { Container, SearchInput } from './styles';
 
 type SearchToolProps = {
   isSearching(newState: boolean): void;
-  setResults(results: Countrie[] | []): void;
+  setResults(results: Country[] | []): void;
 };
 
 const SearchTool: React.FC<SearchToolProps> = ({ isSearching, setResults }) => {
@@ -22,7 +22,7 @@ const SearchTool: React.FC<SearchToolProps> = ({ isSearching, setResults }) => {
       const requestRoute = `${filterRoute}/${debouncedSearchTerm}`;
       const response = await getCountriesApiData(requestRoute);
       isSearching(false);
-      let searchResponse: [] | Countrie[] = [];
+      let searchResponse: [] | Country[] = [];
       if (response.status === 200) {
         searchResponse = response.data;
       }

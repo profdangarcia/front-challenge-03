@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo, useContext } from 'react';
 
-import { Countrie } from '../../types/Countrie';
+import { Country } from '../../types/Country';
 import Wrapper from '../../components/Wrapper';
 import SearchTool from '../../components/SearchTool';
 import SelectTool from '../../components/SelectTool';
@@ -26,8 +26,8 @@ const Home: React.FC = () => {
   const countriesList = useMemo(
     () =>
       displayedCountries.length > 0 ? (
-        displayedCountries.map((countrie: Countrie) => (
-          <CardItem key={countrie.name} countrie={countrie} />
+        displayedCountries.map((country: Country) => (
+          <CardItem key={country.name} country={country} />
         ))
       ) : (
         <p>Sem resultados</p>

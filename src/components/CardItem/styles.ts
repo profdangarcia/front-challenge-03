@@ -1,11 +1,14 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-export const Container = styled.div`
+export const Container = styled(Link)`
   width: 250px;
   height: 290px;
   background: ${props => props.theme.colors.element};
   color: ${props => props.theme.colors.text};
   border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
 `;
 
 export const CardImage = styled.img`

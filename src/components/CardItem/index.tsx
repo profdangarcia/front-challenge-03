@@ -1,19 +1,19 @@
 import React from 'react';
-import { Countrie } from '../../types/Countrie';
+import { Country } from '../../types/Country';
 import { numberFormater } from '../../utils';
 import { Container, CardImage, CardTitle, CardDescription } from './styles';
 
 type CardProps = {
-  countrie: Countrie;
+  country: Country;
 };
 
-const CardItem: React.FC<CardProps> = ({ countrie }) => {
-  const population = numberFormater(countrie.population);
+const CardItem: React.FC<CardProps> = ({ country }) => {
+  const population = numberFormater(country.population);
 
   return (
-    <Container>
-      <CardImage src={countrie.flag} alt={countrie.name} />
-      <CardTitle>{countrie.name}</CardTitle>
+    <Container to={`/${country.alpha3Code}`}>
+      <CardImage src={country.flag} alt={country.name} />
+      <CardTitle>{country.name}</CardTitle>
       <CardDescription>
         <p>
           <strong>Population: </strong>
@@ -21,11 +21,11 @@ const CardItem: React.FC<CardProps> = ({ countrie }) => {
         </p>
         <p>
           <strong>Region: </strong>
-          {countrie.region}
+          {country.region}
         </p>
         <p>
           <strong>Capital: </strong>
-          {countrie.capital}
+          {country.capital}
         </p>
       </CardDescription>
     </Container>

@@ -1,11 +1,11 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { Countrie } from '../types/Countrie';
+import { Country } from '../types/Country';
 import {
   getCountriesApiData,
   allCountriesRoute,
 } from '../services/countriesApi';
 
-export const CountriesContext = createContext<Countrie[]>([]);
+export const CountriesContext = createContext<Country[]>([]);
 
 export const CountriesProvider: React.FC = ({ children }) => {
   const [allCountries, setAllCountries] = useState([]);

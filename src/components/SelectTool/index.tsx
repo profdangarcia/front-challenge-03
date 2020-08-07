@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import { Countrie } from '../../types/Countrie';
+import { Country } from '../../types/Country';
 import { getCountriesApiData, regionsRoute } from '../../services/countriesApi';
 import { CountriesContext } from '../../hooks/CountriesContext';
 import { Container } from './styles';
 
 type SelectToolProps = {
-  stateChange(newState: Countrie[]): void;
+  stateChange(newState: Country[]): void;
 };
 
 const SelectTool: React.FC<SelectToolProps> = ({ stateChange }) => {

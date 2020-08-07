@@ -22,14 +22,14 @@ export const CountriesContainer = styled.div`
   width: 100%;
   align-items: center;
 
-  a {
+  div {
     margin-bottom: 30px;
   }
 
   @media screen and (min-width: ${props =>
       props.theme.sizes.mediumScreenSize}) {
     justify-content: space-between;
-    a {
+    div {
       margin-bottom: 50px;
     }
   }
