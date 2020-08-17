@@ -10,6 +10,19 @@ export const Container = styled(Link)`
   cursor: pointer;
   text-decoration: none;
   box-shadow: ${props => props.theme.shadow};
+
+  &:hover {
+    img {
+      opacity: 0.5;
+    }
+  }
+`;
+
+export const ImageBox = styled.div`
+  background-color: hsl(207, 26%, 17%);
+  width: 100%;
+  height: 140px;
+  border-radius: 4px 4px 0 0;
 `;
 
 export const CardImage = styled.img`
@@ -17,6 +30,8 @@ export const CardImage = styled.img`
   height: 140px;
   object-fit: cover;
   border-radius: 4px 4px 0 0;
+
+  transition: opacity 0.2s ease-in-out;
 `;
 
 export const CardTitle = styled.h2`

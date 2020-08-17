@@ -1,7 +1,13 @@
 import React from 'react';
 import { Country } from '../../types/Country';
 import { numberFormater } from '../../utils';
-import { Container, CardImage, CardTitle, CardDescription } from './styles';
+import {
+  Container,
+  ImageBox,
+  CardImage,
+  CardTitle,
+  CardDescription,
+} from './styles';
 
 type CardProps = {
   country: Country;
@@ -12,7 +18,9 @@ const CardItem: React.FC<CardProps> = ({ country }) => {
 
   return (
     <Container to={`/${country.alpha3Code}`}>
-      <CardImage src={country.flag} alt={country.name} />
+      <ImageBox>
+        <CardImage src={country.flag} alt={country.name} />
+      </ImageBox>
       <CardTitle>{country.name}</CardTitle>
       <CardDescription>
         <p>
