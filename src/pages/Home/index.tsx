@@ -1,18 +1,13 @@
-import React, {
-  useEffect,
-  useState,
-  useMemo,
-  useContext,
-  Suspense,
-} from 'react';
+import React, { useEffect, useState, useMemo, useContext } from 'react';
 
 import { Country } from '../../types/Country';
 import Wrapper from '../../components/Wrapper';
 import SearchTool from '../../components/SearchTool';
 import SelectTool from '../../components/SelectTool';
 import { CountriesContext } from '../../hooks/CountriesContext';
-import Loader from '../../components/Loader';
+import CardItem from '../../components/CardItem';
 import NoResults from '../../components/NoResults';
+import Loader from '../../components/Loader';
 
 import {
   Container,
@@ -22,14 +17,13 @@ import {
 } from './styles';
 
 const Home: React.FC = () => {
-  const CardItem = React.lazy(() => import('../../components/CardItem'));
   const allCountries = useContext(CountriesContext);
   const [displayedCountries, setDisplayedCountries] = useState(allCountries);
-  const [isSearching, setIsSearching] = useState(false);
-  const [hasSearched, setHasSearched] = useState(false);
+  const [isSearching, setIsSearching] = useState(true);
 
   useEffect(() => {
     setDisplayedCountries(allCountries);
+    setIsSearching(false);
   }, [allCountries]);
 
   const countriesList = useMemo(
@@ -40,7 +34,7 @@ const Home: React.FC = () => {
     [displayedCountries],
   );
 
-  const noResults = hasSearched && <NoResults />;
+  const alternativeElement = isSearching ? <Loader /> : <NoResults />;
 
   return (
     <Container>
@@ -50,18 +44,13 @@ const Home: React.FC = () => {
             <SearchTool
               isSearching={setIsSearching}
               setResults={setDisplayedCountries}
-              hasSearched={setHasSearched}
             />
             <SelectTool stateChange={setDisplayedCountries} />
           </FiltersContainer>
-          {displayedCountries && displayedCountries.length > 0 ? (
-            <CountriesContainer>
-              <Suspense fallback={<Loader />}>
-                {!isSearching ? countriesList : <p>Buscando...</p>}
-              </Suspense>
-            </CountriesContainer>
+          {displayedCountries.length > 0 && !isSearching ? (
+            <CountriesContainer>{countriesList}</CountriesContainer>
           ) : (
-            noResults
+            alternativeElement
           )}
         </Content>
       </Wrapper>
