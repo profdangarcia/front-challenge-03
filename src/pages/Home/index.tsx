@@ -36,12 +36,7 @@ const Home: React.FC = () => {
     [displayedCountries],
   );
 
-  const alternativeElement =
-    !isSearching && displayedCountries.length === 0 ? (
-      <NoResults />
-    ) : (
-      <Loader />
-    );
+  const alternativeElement = !isSearching ? <NoResults /> : <Loader />;
 
   return (
     <Container>
@@ -54,7 +49,7 @@ const Home: React.FC = () => {
             />
             <SelectTool stateChange={setDisplayedCountries} />
           </FiltersContainer>
-          {displayedCountries.length > 0 ? (
+          {displayedCountries.length > 0 && !isSearching ? (
             <CountriesContainer>{countriesList}</CountriesContainer>
           ) : (
             alternativeElement
