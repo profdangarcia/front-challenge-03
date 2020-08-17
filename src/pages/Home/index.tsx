@@ -26,6 +26,7 @@ const Home: React.FC = () => {
   const allCountries = useContext(CountriesContext);
   const [displayedCountries, setDisplayedCountries] = useState(allCountries);
   const [isSearching, setIsSearching] = useState(false);
+  const [hasSearched, setHasSearched] = useState(false);
 
   useEffect(() => {
     setDisplayedCountries(allCountries);
@@ -39,6 +40,8 @@ const Home: React.FC = () => {
     [displayedCountries],
   );
 
+  const noResults = hasSearched && <NoResults />;
+
   return (
     <Container>
       <Wrapper>
@@ -47,17 +50,18 @@ const Home: React.FC = () => {
             <SearchTool
               isSearching={setIsSearching}
               setResults={setDisplayedCountries}
+              hasSearched={setHasSearched}
             />
             <SelectTool stateChange={setDisplayedCountries} />
           </FiltersContainer>
-          {displayedCountries.length > 0 ? (
+          {displayedCountries && displayedCountries.length > 0 ? (
             <CountriesContainer>
               <Suspense fallback={<Loader />}>
                 {!isSearching ? countriesList : <p>Buscando...</p>}
               </Suspense>
             </CountriesContainer>
           ) : (
-            <NoResults />
+            noResults
           )}
         </Content>
       </Wrapper>

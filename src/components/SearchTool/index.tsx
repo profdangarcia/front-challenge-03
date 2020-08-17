@@ -8,10 +8,15 @@ import { Container, SearchInput } from './styles';
 
 type SearchToolProps = {
   isSearching(newState: boolean): void;
+  hasSearched(newState: boolean): void;
   setResults(results: Country[] | []): void;
 };
 
-const SearchTool: React.FC<SearchToolProps> = ({ isSearching, setResults }) => {
+const SearchTool: React.FC<SearchToolProps> = ({
+  isSearching,
+  setResults,
+  hasSearched,
+}) => {
   const [searchTerm, setSearchTerm] = useState('');
   const allCountries = useContext(CountriesContext);
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
@@ -19,6 +24,7 @@ const SearchTool: React.FC<SearchToolProps> = ({ isSearching, setResults }) => {
   useEffect(() => {
     const searchFor = async (): Promise<void> => {
       isSearching(true);
+      hasSearched(true);
       const response = await getCountriesApiData(
         filterRoute,
         debouncedSearchTerm,
@@ -35,7 +41,7 @@ const SearchTool: React.FC<SearchToolProps> = ({ isSearching, setResults }) => {
     } else {
       setResults(allCountries);
     }
-  }, [debouncedSearchTerm, allCountries, isSearching, setResults]);
+  }, [debouncedSearchTerm, allCountries, isSearching, setResults, hasSearched]);
 
   return (
     <Container>
