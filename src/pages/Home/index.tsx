@@ -18,12 +18,14 @@ import {
 
 const Home: React.FC = () => {
   const allCountries = useContext(CountriesContext);
-  const [displayedCountries, setDisplayedCountries] = useState(allCountries);
+  const [displayedCountries, setDisplayedCountries] = useState([] as Country[]);
   const [isSearching, setIsSearching] = useState(true);
 
   useEffect(() => {
+    if (allCountries.length > 0) {
+      setIsSearching(false);
+    }
     setDisplayedCountries(allCountries);
-    setIsSearching(false);
   }, [allCountries]);
 
   const countriesList = useMemo(
@@ -34,7 +36,12 @@ const Home: React.FC = () => {
     [displayedCountries],
   );
 
-  const alternativeElement = isSearching ? <Loader /> : <NoResults />;
+  const alternativeElement =
+    !isSearching && displayedCountries.length === 0 ? (
+      <NoResults />
+    ) : (
+      <Loader />
+    );
 
   return (
     <Container>
@@ -47,7 +54,7 @@ const Home: React.FC = () => {
             />
             <SelectTool stateChange={setDisplayedCountries} />
           </FiltersContainer>
-          {displayedCountries.length > 0 && !isSearching ? (
+          {displayedCountries.length > 0 ? (
             <CountriesContainer>{countriesList}</CountriesContainer>
           ) : (
             alternativeElement
