@@ -40,4 +40,4 @@ const CardItem: React.FC<CardProps> = ({ country }) => {
   );
 };
 
-export default CardItem;
+export default React.memo(CardItem);
