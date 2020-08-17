@@ -9,7 +9,7 @@ export default createGlobalStyle`
     box-sizing: border-box;
     border: 0;
     font-size: 14px;
-    transition: background 0.5s ease-in-out;
+    transition: background 0.8s ease-in-out;
   }
 
   html, body, #root {
