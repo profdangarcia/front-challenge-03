@@ -8,6 +8,7 @@ import { CountriesContext } from '../../hooks/CountriesContext';
 import CardItem from '../../components/CardItem';
 import NoResults from '../../components/NoResults';
 import Loader from '../../components/Loader';
+import ErrorComponent from '../../components/ErrorComponent';
 
 import {
   Container,
@@ -17,7 +18,7 @@ import {
 } from './styles';
 
 const Home: React.FC = () => {
-  const allCountries = useContext(CountriesContext);
+  const { allCountries, hasErrors } = useContext(CountriesContext);
   const [displayedCountries, setDisplayedCountries] = useState([] as Country[]);
   const [isSearching, setIsSearching] = useState(true);
 
@@ -41,20 +42,24 @@ const Home: React.FC = () => {
   return (
     <Container>
       <Wrapper>
-        <Content>
-          <FiltersContainer>
-            <SearchTool
-              isSearching={setIsSearching}
-              setResults={setDisplayedCountries}
-            />
-            <SelectTool stateChange={setDisplayedCountries} />
-          </FiltersContainer>
-          {displayedCountries.length > 0 && !isSearching ? (
-            <CountriesContainer>{countriesList}</CountriesContainer>
-          ) : (
-            alternativeElement
-          )}
-        </Content>
+        {!hasErrors ? (
+          <Content>
+            <FiltersContainer>
+              <SearchTool
+                isSearching={setIsSearching}
+                setResults={setDisplayedCountries}
+              />
+              <SelectTool stateChange={setDisplayedCountries} />
+            </FiltersContainer>
+            {displayedCountries.length > 0 && !isSearching ? (
+              <CountriesContainer>{countriesList}</CountriesContainer>
+            ) : (
+              alternativeElement
+            )}
+          </Content>
+        ) : (
+          <ErrorComponent />
+        )}
       </Wrapper>
     </Container>
   );

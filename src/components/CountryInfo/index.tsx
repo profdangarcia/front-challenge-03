@@ -26,7 +26,7 @@ type SmallInfo = {
 
 const CountryInfo: React.FC<CountryInfoProps> = ({ country }) => {
   const population = numberFormater(country.population);
-  const allCountries = useContext(CountriesContext);
+  const { allCountries } = useContext(CountriesContext);
 
   const topLevelDomain = country.topLevelDomain
     .map(domain => domain)

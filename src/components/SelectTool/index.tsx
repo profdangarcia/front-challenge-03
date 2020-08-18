@@ -9,7 +9,7 @@ type SelectToolProps = {
 };
 
 const SelectTool: React.FC<SelectToolProps> = ({ stateChange }) => {
-  const allCountries = useContext(CountriesContext);
+  const { allCountries } = useContext(CountriesContext);
 
   const handleFilter = async (filter: string): Promise<void> => {
     if (filter) {

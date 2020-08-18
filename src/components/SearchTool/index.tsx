@@ -13,7 +13,7 @@ type SearchToolProps = {
 
 const SearchTool: React.FC<SearchToolProps> = ({ isSearching, setResults }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const allCountries = useContext(CountriesContext);
+  const { allCountries } = useContext(CountriesContext);
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
   useEffect(() => {
