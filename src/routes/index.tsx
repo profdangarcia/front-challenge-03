@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import Loader from '../components/Loader';
 
 import Home from '../pages/Home';
-import CountryDetails from '../pages/CountryDetails';
 
-const Routes: React.FC = () => (
-  <Switch>
-    <Route exact path="/" component={Home} />
-    <Route path="/:code" component={CountryDetails} />
-  </Switch>
-);
+const Routes: React.FC = () => {
+  const CountryDetails = React.lazy(() => import('../pages/CountryDetails'));
+  return (
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Suspense fallback={<Loader />}>
+        <Route path="/:code" component={CountryDetails} />
+      </Suspense>
+    </Switch>
+  );
+};
 
 export default Routes;
